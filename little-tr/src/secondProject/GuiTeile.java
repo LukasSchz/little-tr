@@ -20,32 +20,32 @@ import javax.swing.border.EmptyBorder;
 
 public class GuiTeile extends JFrame{
 
-	String s = "Eingabe hier!";
-	int counter = 0;
+	private String s = "Eingabe hier!";
+	private int counter = 0;
 	
-	JLabel header;
-	JTextField eingabe;
-	JButton istGleich;
-	JButton klammerAuf;
-	JButton klammerZu;
-	JButton plus;
-	JButton minus;
-	JButton mal;
-	JButton geteilt;
-	JButton nullZahl;
-	JButton eins;
-	JButton zwei;
-	JButton drei;
-	JButton vier;
-	JButton fuenf;
-	JButton sechs;
-	JButton sieben;
-	JButton acht;
-	JButton neun;
-	JPanel zentrum;
-	JPanel zentrumbtn;
-	JPanel zentrumLinks;
-	JPanel zentrumRechts;
+	private JLabel header;
+	private JTextField eingabe;
+	private JButton istGleich;
+	private JButton klammerAuf;
+	private JButton klammerZu;
+	private JButton plus;
+	private JButton minus;
+	private JButton mal;
+	private JButton geteilt;
+	private JButton nullZahl;
+	private JButton eins;
+	private JButton zwei;
+	private JButton drei;
+	private JButton vier;
+	private JButton fuenf;
+	private JButton sechs;
+	private JButton sieben;
+	private JButton acht;
+	private JButton neun;
+	private JPanel zentrum;
+	private JPanel zentrumbtn;
+	private JPanel zentrumLinks;
+	private JPanel zentrumRechts;
 	
 	public GuiTeile() {
 		

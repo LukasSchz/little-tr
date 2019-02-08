@@ -28,7 +28,6 @@ public class Rechner {
 		if(convertCheck()) {
 			mgr = new ScriptEngineManager();
 			engine = mgr.getEngineByName("JavaScript");
-			System.out.println("Die Rechnung lautet: " + rechnung);
 			if(engine.eval(rechnung) instanceof Integer) {
 				ergebnis = (Integer) engine.eval(rechnung);
 			}
@@ -51,7 +50,6 @@ public class Rechner {
 		anpassen();
 		Character[] array = bestandteile.toArray(new Character[bestandteile.size()]);
 		rechnung = arrayToString(array);
-		System.out.println(bestandteile.size());
 		return check();
 	}
 	
