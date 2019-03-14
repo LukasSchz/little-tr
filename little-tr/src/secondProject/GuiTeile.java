@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,7 +12,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -24,7 +23,8 @@ public class GuiTeile extends JFrame{
 	private int counter = 0;
 	
 	private JLabel header;
-	private JTextField eingabe;
+	private JTextArea eingabe;
+	private JScrollPane scroll;
 	private JButton istGleich;
 	private JButton klammerAuf;
 	private JButton klammerZu;
@@ -65,9 +65,11 @@ public class GuiTeile extends JFrame{
 		header.setHorizontalAlignment(SwingConstants.CENTER);
 		header.setBorder(new EmptyBorder(5,5,5,5));
 		
-		eingabe = new JTextField(s);
+		eingabe = new JTextArea(s);
 		eingabe.setBorder(new EmptyBorder(5,5,5,5));
-		eingabe.setHorizontalAlignment(JTextField.CENTER);
+		eingabe.setRows(5);
+		
+		scroll = new JScrollPane(eingabe);
 		
 		istGleich = new JButton("=");
 		klammerAuf = new JButton("(");
@@ -104,7 +106,7 @@ public class GuiTeile extends JFrame{
 		getContentPane().add(BorderLayout.SOUTH, istGleich);
 		((JComponent) getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
-		zentrum.add(BorderLayout.NORTH, eingabe);
+		zentrum.add(BorderLayout.NORTH, scroll);
 		zentrum.add(BorderLayout.CENTER, zentrumbtn);
 		
 		zentrumbtn.add(sieben);
@@ -158,8 +160,11 @@ public class GuiTeile extends JFrame{
 			String inhalt = eingabe.getText();
 			char[] test = inhalt.toCharArray();
 			if((Character.isDigit(test[0])) && counter == 0) {
-				eingabe.setText(inhalt + zwischenEingabe);
+				eingabe.append(zwischenEingabe);
 				counter = 0;
+			} else if(counter == 1){
+			    eingabe.append(zwischenEingabe);
+			    counter = 0;
 			} else {
 				eingabe.setText(zwischenEingabe);
 				counter = 0;
@@ -173,7 +178,7 @@ public class GuiTeile extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			Rechner rechner = new Rechner(eingabe.getText());
 			counter = 1;
-			eingabe.setText(rechner.toString());
+			eingabe.append("\n" + rechner.toString() + "\n");
 		}
 	}
 }
